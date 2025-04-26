@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xin lỗi em 💔</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    #message {
+      font-size: 24px;
+      margin: 20px;
+      color: #e60073;
+    }
+
+    #button, #image {
+      cursor: pointer;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    #button:hover {
+      background-color: #ff3399;
+    }
+
+    img {
+      width: 200px;
+      margin-top: 30px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Em yêu à... 😢</h1>
+  <div id="message">
+    Anh xin lỗi vì đã làm em buồn. Anh thật sự không cố ý đâu...
+  </div>
+
+  <button id="button">Nếu em tha thứ, bấm vào đây 💖</button>
+  <br>
+  <img id="image" src="https://i.imgur.com/7kYkFJm.png" alt="Xin lỗi" />
+
+  <script>
+    const message = document.getElementById("message");
+    const button = document.getElementById("button");
+    const image = document.getElementById("image");
+
+    function changeMessage() {
+      message.innerHTML = "Cảm ơn em đã tha thứ! Anh yêu em nhiều lắm 😘💗<br>Đi ăn kem nhé?";
+      image.src = "https://i.imgur.com/EQkU1Yv.gif";
+      button.style.display = "none";
+    }
+
+    button.addEventListener("click", changeMessage);
+    image.addEventListener("click", changeMessage);
+  </script>
+
+</body>
+</html>

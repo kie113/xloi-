@@ -1,75 +1,117 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Xin lỗi em 💔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
     body {
-      background-color: #fff0f5;
+      margin: 0;
+      padding: 0;
       font-family: 'Arial', sans-serif;
+      background-color: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    main {
       text-align: center;
-      padding: 50px;
     }
 
-    #message {
-      font-size: 24px;
-      margin: 20px;
+    h1 {
+      font-size: 6vw;
       color: #e60073;
+      margin-bottom: 50px;
     }
 
-    #button, #image {
+    .btn-container {
+      display: inline-block;
+      margin: 10px;
+      position: relative;
+    }
+
+    button {
+      padding: 15px 100px;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
       cursor: pointer;
-      margin-top: 30px;
-      padding: 12px 24px;
+      transition: all 0.3s ease;
+    }
+
+    #yes-btn {
       background-color: #ff66b2;
       color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 18px;
-      transition: 0.3s;
     }
 
-    #button:hover {
-      background-color: #ff3399;
+    #yes-btn:hover {
+      background-color: #ff3385;
     }
 
-    img {
-      width: 200px;
-      margin-top: 30px;
-      border-radius: 20px;
-      transition: 0.3s;
+    #no {
+      z-index: 10;
+      position: absolute;
+      transition: all 0.3s ease;
     }
 
-    img:hover {
-      transform: scale(1.05);
+    #no-btn {
+      background-color: #cccccc;
+      color: #333;
+      position: absolute;
+      transition: transform 0.5s ease;
+    }
+
+    #no-btn:hover {
+      background-color: #ff3385;
     }
   </style>
 </head>
 <body>
-
-  <h1>Em yêu à... 😢</h1>
-  <div id="message">
-    Anh xin lỗi vì đã làm em buồn. Anh thật sự không cố ý đâu...
-  </div>
-
-  <button id="button">Nếu em tha thứ, bấm vào đây 💖</button>
-  <br>
-  <img id="image" src="https://i.imgur.com/7kYkFJm.png" alt="Xin lỗi" />
+  <main>
+    <h1>Gửi con vợ Tường Vy💖</h1>
+    <h2></h2>
+    <div id="yes" class="btn-container">
+      <button type="button" id="yes-btn">Em đồng ý tha cho anh</button>
+    </div>
+    <div id="no" class="btn-container">
+      <button type="button" id="no-btn">Có cái lồn chứ tha</button>
+    </div>
+  </main>
 
   <script>
-    const message = document.getElementById("message");
-    const button = document.getElementById("button");
-    const image = document.getElementById("image");
+    const noContainer = document.getElementById("no");
+    const noButton = document.getElementById("no-btn");
 
-    function changeMessage() {
-      message.innerHTML = "Cảm ơn em đã tha thứ! Anh yêu em nhiều lắm 😘💗<br>Đi ăn kem nhé?";
-      image.src = "https://i.imgur.com/EQkU1Yv.gif";
-      button.style.display = "none";
-    }
+    // Hover để tránh né (giữ nguyên)
+    noContainer.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - 200));
+      const y = Math.floor(Math.random() * (window.innerHeight - 100));
+      noContainer.style.left = `${x}px`;
+      noContainer.style.top = `${y}px`;
+    });
 
-    button.addEventListener("click", changeMessage);
-    image.addEventListener("click", changeMessage);
+    // Click để làm nhỏ dần và xuất hiện lại ở chỗ khác
+    noButton.addEventListener('click', () => {
+      // Thu nhỏ nút
+      noButton.style.transform = "scale(0)";
+
+      // Sau 0.5s thì đổi vị trí và làm nó hiện lại
+      setTimeout(() => {
+        const x = Math.floor(Math.random() * (window.innerWidth - 200));
+        const y = Math.floor(Math.random() * (window.innerHeight - 100));
+        noContainer.style.left = `${x}px`;
+        noContainer.style.top = `${y}px`;
+
+        // Hiện lại nút (sau khi chuyển chỗ)
+        setTimeout(() => {
+          noButton.style.transform = "scale(1)";
+        }, 100);
+      }, 500);
+    });
   </script>
-
 </body>
 </html>
